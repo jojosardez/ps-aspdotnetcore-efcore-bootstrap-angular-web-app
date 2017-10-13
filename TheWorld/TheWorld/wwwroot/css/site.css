@@ -56,8 +56,32 @@ input[type=text], input[type=password], textarea {
     width: 250px;
     overflow: hidden;
     left: 0;
+    -ms-transition: left ease .25s;
+    -o-transition: left ease .25s;
+    -webkit-transition: left ease .25s;
+    transition: left ease .25s;
+}
+
+#sidebar.hide-sidebar {
+    left: -250px;
+    -ms-transition: left ease .25s;
+    -o-transition: left ease .25s;
+    -webkit-transition: left ease .25s;
+    transition: left ease .25s;
 }
 
 #wrapper {
     margin: 0 0 0 250px;
+    -ms-transition: margin-left ease .25s;
+    -o-transition: margin-left ease .25s;
+    -webkit-transition: margin-left ease .25s;
+    transition: margin-left ease .25s;
+}
+
+#wrapper.hide-sidebar {
+    margin-left: 0;
+    -ms-transition: margin-left ease .25s;
+    -o-transition: margin-left ease .25s;
+    -webkit-transition: margin-left ease .25s;
+    transition: margin-left ease .25s;
 }

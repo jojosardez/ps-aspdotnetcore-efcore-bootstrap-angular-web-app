@@ -8,6 +8,7 @@
     <Content Include="wwwroot\css\site.css" />
     <Content Include="wwwroot\img\jojo.jpg" />
     <Content Include="wwwroot\img\user1.jpg" />
+    <Content Include="wwwroot\js\site.js" />
   </ItemGroup>
 
   <ItemGroup>
