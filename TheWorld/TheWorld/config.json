@@ -1,3 +1,7 @@
 {
-  "MailSettings": { "ToAddress": "jojo@sardez.com" }
+  "MailSettings": { "ToAddress": "jojo@sardez.com" },
+  "ConnectionStrings": {
+    "WorldContextConnection":
+      "Server=(localdb)\\MSSQLLocalDb;Database=TheWorldDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
+  }
 }

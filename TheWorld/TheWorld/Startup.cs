@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using TheWorld.Models;
 using TheWorld.Services;
 
 namespace TheWorld
@@ -36,17 +37,32 @@ namespace TheWorld
                 services.AddScoped<IMailService, DebugMailService>();
             }
 
+            // Inject Entity Framework DB Context
+            services.AddDbContext<WorldContext>();
+
+            // Repository pattern
+            services.AddScoped<IWorldRepository, WorldRepository>();
+
+            // Seeder
+            services.AddTransient<WorldContextSeedData>();
+
             // Using MVC (Microsoft.AspNetCore.Mvc)
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, WorldContextSeedData seeder, ILoggerFactory factory)
         {
             // Error page. For debugging
             if (env.IsEnvironment("Development"))
             {
                 app.UseDeveloperExceptionPage();
+                // Note: AddDebug is part of Microsoft.Extensions.Logging.Debug
+                factory.AddDebug(LogLevel.Information);
+            }
+            else
+            {
+                factory.AddDebug(LogLevel.Error);
             }
 
             // Returning HTML content
@@ -67,6 +83,9 @@ namespace TheWorld
                     template: "{controller}/{action}/{id?}",
                     defaults: new {controller = "App", action = "Index"});
             });
+
+            // Seed the database
+            seeder.EnsureSeedData().Wait();
         }
     }
 }
