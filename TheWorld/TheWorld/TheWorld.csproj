@@ -3,17 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Content Include="wwwroot\css\site.css" />
-    <Content Include="wwwroot\img\jojo.jpg" />
-    <Content Include="wwwroot\img\user1.jpg" />
-    <Content Include="wwwroot\js\site.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\index.html" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
@@ -26,5 +15,9 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\site.js" />
   </ItemGroup>
 </Project>

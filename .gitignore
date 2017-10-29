@@ -3,3 +3,5 @@
 **/obj/
 **/.suo
 **/wwwroot/lib/
+**/*.user
+**/.vs

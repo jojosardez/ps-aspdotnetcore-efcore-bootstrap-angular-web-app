@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Hosting;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 
 namespace TheWorld
 {
@@ -16,7 +12,8 @@ namespace TheWorld
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
-                .UseApplicationInsights()
+                // Removed Application Insights
+                //.UseApplicationInsights()
                 .Build();
 
             host.Run();
