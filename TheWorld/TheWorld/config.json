@@ -3,5 +3,6 @@
   "ConnectionStrings": {
     "WorldContextConnection":
       "Server=(localdb)\\MSSQLLocalDb;Database=TheWorldDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
-  }
+  },
+  "Keys": { "BingKey": "Its in Keys__BingKey user environment variable" }
 }

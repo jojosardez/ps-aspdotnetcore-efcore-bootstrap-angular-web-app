@@ -46,6 +46,9 @@ namespace TheWorld
             // Repository pattern
             services.AddScoped<IWorldRepository, WorldRepository>();
 
+            // Register GeoCoordsService 
+            services.AddTransient<GeoCoordsService>();
+
             // Seeder
             services.AddTransient<WorldContextSeedData>();
 
