@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
 using TheWorld.Models;
 using TheWorld.Services;
+using TheWorld.ViewModels;
 
 namespace TheWorld
 {
@@ -47,12 +50,23 @@ namespace TheWorld
             services.AddTransient<WorldContextSeedData>();
 
             // Using MVC (Microsoft.AspNetCore.Mvc)
-            services.AddMvc();
+            services.AddMvc()
+                // Set properties to camel case (note: in this version of MVC, by default, it is already using CamelCasePropertyNamesContractResolver)
+                .AddJsonOptions(config =>
+                {
+                    config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, WorldContextSeedData seeder, ILoggerFactory factory)
         {
+            // Configuring AutoMapper mapping
+            Mapper.Initialize(config =>
+            {
+                config.CreateMap<TripViewModel, Trip>().ReverseMap();
+            });
+
             // Error page. For debugging
             if (env.IsEnvironment("Development"))
             {
