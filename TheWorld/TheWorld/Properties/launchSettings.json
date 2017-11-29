@@ -10,6 +10,7 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
+      "launchBrowser": true,
       "environmentVariables": {
         "MailSettings__ToAddress": "mojo@jojo.com",
         "ASPNETCORE_ENVIRONMENT": "Development"

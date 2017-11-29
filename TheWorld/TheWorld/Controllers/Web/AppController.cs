@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
+using Microsoft.AspNetCore.Authorization;
 using TheWorld.Models;
 using TheWorld.Services;
 using TheWorld.ViewModels;
@@ -59,6 +60,13 @@ namespace TheWorld.Controllers.Web
                 ViewBag.UserMessage = "Message Sent";
             }
             return View();
+        }
+
+        [Authorize]
+        public IActionResult Trips()
+        {
+            var data = _repository.GetAllTrips();
+            return View(data);
         }
 
         public IActionResult About()
