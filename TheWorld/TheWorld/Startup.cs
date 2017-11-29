@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -59,6 +60,15 @@ namespace TheWorld
                 {
                     config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 });
+
+            // Add ASP .Net Core Identity
+            services.AddIdentity<WorldUser, IdentityRole>(config =>
+                {
+                    config.User.RequireUniqueEmail = true;
+                    config.Password.RequiredLength = 8;
+                    config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
+                })
+                .AddEntityFrameworkStores<WorldContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -92,6 +102,10 @@ namespace TheWorld
             // Using static files (Microsoft.AspNetCore.StaticFiles)
             //app.UseDefaultFiles();
             app.UseStaticFiles();
+
+
+            // Use ASP .Net Core Identity
+            app.UseIdentity();
 
             // Using MVC (Microsoft.AspNetCore.Mvc)
             app.UseMvc(config =>

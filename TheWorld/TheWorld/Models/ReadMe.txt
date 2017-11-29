@@ -22,3 +22,8 @@ This will execute the migrations and update the database:
 
 	dotnet ef database update
 
+
+This will add ASP .Net Core Identity migrations
+
+	dotnet ef migrations add IdentityClasses
+	dotnet ef database update
