@@ -14,5 +14,6 @@ namespace TheWorld.Models
         Trip GetTripByName(string tripName);
 
         void AddStop(string tripName, Stop newStop);
+        object GetTripsByUsername(string name);
     }
 }
