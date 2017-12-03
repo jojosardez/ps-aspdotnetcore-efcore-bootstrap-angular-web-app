@@ -4,6 +4,6 @@
     "use strict";
 
     // create module
-    angular.module("app-trips", []);
+    angular.module("app-trips", ["simpleControls"]);
 
 })();
