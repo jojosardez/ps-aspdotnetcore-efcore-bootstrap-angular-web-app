@@ -11,7 +11,7 @@
                 show: "=displayWhen"
             },
             restrict: "E",
-            templateUrl: "../views/waitCursor.html"
+            templateUrl: "/views/waitCursor.html"
         };
     }
 })();
