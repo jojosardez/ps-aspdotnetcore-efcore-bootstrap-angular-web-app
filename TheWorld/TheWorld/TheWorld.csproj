@@ -22,4 +22,10 @@
   <ItemGroup>
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>
+
+  <Target Name="OurBuild" BeforeTargets="Publish">
+    <Exec Command="npm install" />
+    <Exec Command="bower install" />
+    <Exec Command="node node_modules\\gulp\\bin\\gulp.js minify" />
+  </Target>
 </Project>
