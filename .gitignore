@@ -5,3 +5,4 @@
 **/wwwroot/lib/
 **/*.user
 **/.vs
+**/node_modules/
